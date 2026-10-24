@@ -1,4 +1,4 @@
 [submodule "Memtly.Core"]
 	path = Memtly.Core
-	url = ../memtly.core.git
-	branch = master
+	url = https://github.com/patspei/Memtly.Core.git
+	branch = feature/wedding-customizations
