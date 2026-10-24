@@ -1,5 +1,8 @@
 # Lokale Entwicklung
 
+Das erste Galerie-Feature ist lokal verfügbar: Aktivierung, Demolink und
+Browser-Prüfschritte stehen in [`docs/MASONRY.md`](docs/MASONRY.md).
+
 Die Entwicklungsumgebung verwendet ausschließlich lokale Testdaten. Sie hat keine
 Verbindung zur produktiven Installation, zu Dokploy oder zu Cloudflare.
 
@@ -97,6 +100,7 @@ dotnet test Memtly.Community.sln -c Release --no-build --no-restore
 dotnet package list --project Memtly.Community.sln --vulnerable --include-transitive --no-restore
 Push-Location Memtly.Core/Memtly.Core
 npm ci
+npm test
 npm audit
 Pop-Location
 docker --context desktop-linux build -t memtly-wedding-dev:local -f Memtly.Community/Dockerfile .
