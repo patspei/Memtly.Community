@@ -1,0 +1,23 @@
+name: memtly-wedding-dev
+
+services:
+  database:
+    image: mariadb:11.4@sha256:250e1609e93c0e6aecf64bfbab2d84d5e89d2481540fe77447ff6c855c3b1873
+    environment:
+      MARIADB_DATABASE: memtly_dev
+      MARIADB_USER: memtly_dev
+      MARIADB_PASSWORD: ${MEMTLY_DEV_DB_PASSWORD:?Run scripts/dev.ps1 init first}
+      MARIADB_ROOT_PASSWORD: ${MEMTLY_DEV_DB_ROOT_PASSWORD:?Run scripts/dev.ps1 init first}
+    ports:
+      - "127.0.0.1:${MEMTLY_DEV_DB_PORT:-13306}:3306"
+    volumes:
+      - database:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+
+volumes:
+  database:

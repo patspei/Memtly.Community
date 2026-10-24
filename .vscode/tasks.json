@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "memtly: prepare",
+      "type": "process",
+      "command": "pwsh",
+      "args": ["-NoProfile", "-File", "${workspaceFolder}/scripts/dev.ps1", "prepare"],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "memtly: test",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["test", "Memtly.Community.sln", "-c", "Debug", "--no-restore"],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

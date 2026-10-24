@@ -1,6 +1,12 @@
 **/.classpath
 **/.dockerignore
 **/.env
+**/.env.*
+**/.idea
+.local/
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/TestResults/
 **/.git
 **/.gitignore
 **/.project
@@ -25,7 +31,3 @@
 LICENSE
 README.md
 !**/.gitignore
-!.git/HEAD
-!.git/config
-!.git/packed-refs
-!.git/refs/heads/**

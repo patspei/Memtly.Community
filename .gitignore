@@ -23,3 +23,11 @@
 /node_modules
 /ffmpeg
 *.bak
+
+# Local IDE state, credentials, runtime data and verification output
+**/.idea/
+.local/
+.env
+.env.*
+!.env.example
+**/TestResults/

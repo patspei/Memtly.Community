@@ -19,6 +19,6 @@ namespace Memtly.Community
                 .UseIIS()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
-                .UseUrls("http://*:5000");
+                .UseUrls(Environment.GetEnvironmentVariable("ASPNETCORE_URLS") ?? "http://*:5000");
     }
 }

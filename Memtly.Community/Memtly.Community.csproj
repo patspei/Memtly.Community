@@ -36,6 +36,6 @@
   </ItemGroup>
   
   <Target Name="CheckMemtlyCoreExists" BeforeTargets="BeforeBuild">
-    <Error Condition="!Exists('..\Memtly.Core\Memtly.Core\Memtly.Core.csproj')" Text="Memtly.Core project not found. Please clone all submodules by running: git submodule update --init --recursive --remote." />
+    <Error Condition="!Exists('..\Memtly.Core\Memtly.Core\Memtly.Core.csproj')" Text="Memtly.Core project not found. Please clone all submodules by running: git submodule update --init --recursive." />
   </Target>
 </Project>

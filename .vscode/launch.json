@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Memtly: local MariaDB (Debug)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "memtly: prepare",
+      "program": "${workspaceFolder}/.local/app/Memtly.Community.dll",
+      "cwd": "${workspaceFolder}/.local/app",
+      "envFile": "${workspaceFolder}/.local/dev.env",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Memtly: attach to running .NET process",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}",
+      "justMyCode": true
+    }
+  ]
+}
