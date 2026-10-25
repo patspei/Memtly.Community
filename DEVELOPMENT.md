@@ -2,6 +2,8 @@
 
 Das erste Galerie-Feature ist lokal verfügbar: Aktivierung, Demolink und
 Browser-Prüfschritte stehen in [`docs/MASONRY.md`](docs/MASONRY.md).
+Die aktuelle serverseitige Medien-/Downloadabsicherung, Endpunkte und ihre
+Regressionstests sind in [`docs/DOWNLOAD-SECURITY.md`](docs/DOWNLOAD-SECURITY.md) beschrieben.
 
 Die Entwicklungsumgebung verwendet ausschließlich lokale Testdaten. Sie hat keine
 Verbindung zur produktiven Installation, zu Dokploy oder zu Cloudflare.
@@ -71,6 +73,10 @@ vor dem Beenden prüfen, dass diese noch zur lokalen Memtly-Instanz gehört.
   bleiben bei erneutem Publish erhalten; `.local` nicht als Build-Cleanup löschen.
 - Data-Protection-Schlüssel liegen in `.local/app/config`; FFmpeg in `.local/ffmpeg`.
   FFmpeg kann beim ersten Start heruntergeladen werden.
+- Galerieoriginale und Vorschauen werden ausschließlich über autorisierte
+  `/Media/Original/{id}`- und `/Media/Thumbnail/{id}`-Endpunkte ausgeliefert.
+  Alte `/uploads`, `/thumbnails` und `/temp`-URLs liefern 404. Vorschauen werden
+  sicher pro Medien-ID unter `.local/app/thumbnails/Secure` erzeugt.
 - Verschlüsselungsschlüssel, Salt und Admin-Passwort werden zufällig erzeugt und
   persistent gespeichert. Sie müssen zur Testdatenbank passen.
 - Windows: `.local` und `.env` sind auf den aktuellen Benutzer und SYSTEM

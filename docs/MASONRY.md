@@ -120,16 +120,20 @@ ausführen; Browserkonsole oder Code-Injektion sind dafür nicht erforderlich.
 8. Optional Netzwerkdrosselung im Browser aktivieren, neu laden und scrollen:
    langsam geladene Vorschaubilder müssen sich nach dem Laden neu einpassen.
 
-## Unabhängiger vorhandener Downloadfehler
+## Historischer Downloadfehler (mit Feature 2a behoben)
+
+**Mit Feature 2a behoben:** Die folgende Beschreibung dokumentiert den damaligen
+Befund. Die aktuelle Absicherung und der erfolgreiche Vorher-/Nachher-Test stehen
+in [`DOWNLOAD-SECURITY.md`](DOWNLOAD-SECURITY.md).
 
 **Der vorhandene anonyme Gesamt-ZIP-Download enthält in der lokalen Testgalerie
 auch den ausstehenden Gast-Upload.** Der Befund wurde zuerst mit Masonry und
 anschließend identisch mit Tile reproduziert (13 Approved + 1 Pending im ZIP).
 Galerie-HTML und Lightbox verweigern Gästen diesen Pending-Inhalt korrekt.
 
-Die Downloadimplementierung und Berechtigungen wurden gemäß Featureauftrag nicht
-verändert. Der Fehler gehört in die separate Arbeit an Download/Freigaben und
-muss vor einem produktiven Einsatz eigener Downloadänderungen behoben werden.
+Im Masonry-Schritt wurden Downloadimplementierung und Berechtigungen gemäß
+Featureauftrag noch nicht verändert. Die separate Korrektur ist inzwischen in
+Feature 2a enthalten und mit echten ZIP-Inhalten überprüft.
 Die produktive Installation wurde weder abgefragt noch verändert. Für die manuelle
 Prüfung von Gesamt-ZIPs ausschließlich die erzeugten lokalen Testmedien verwenden.
 
