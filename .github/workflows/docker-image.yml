@@ -29,6 +29,9 @@ jobs:
         with:
           node-version: '22'
 
+      - name: Install HEIC decoder for Linux regression tests
+        run: sudo apt-get update && sudo apt-get install -y imagemagick libheif-plugin-libde265 libheif-plugin-x265 util-linux
+
       - name: Restore
         run: dotnet restore --locked-mode Memtly.Community.sln
 
@@ -71,6 +74,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build and push
+        id: image
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -81,3 +85,7 @@ jobs:
           tags: |
             ghcr.io/patspei/memtly.community:wedding-dev
             ghcr.io/patspei/memtly.community:${{ github.sha }}
+
+      - name: Record immutable image reference
+        run: |
+          echo 'ghcr.io/patspei/memtly.community:${{ github.sha }}@${{ steps.image.outputs.digest }}' >> "$GITHUB_STEP_SUMMARY"
