@@ -1,13 +1,13 @@
 ARG CODE_BUILT_BY="3rd Party"
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
-RUN apt-get update && apt-get install -y --no-install-recommends imagemagick libheif-plugin-libde265 util-linux && rm -rf /var/lib/apt/lists/*
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-noble AS base
+RUN apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 update && apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 install -y --no-install-recommends imagemagick libheif-plugin-libde265 util-linux && rm -rf /var/lib/apt/lists/*
 COPY Memtly.Core/Memtly.Core/Assets/Heif/policy.xml /etc/ImageMagick-6/policy.xml
 COPY Memtly.Core/Memtly.Core/Assets/Heif/policy.xml /etc/ImageMagick-7/policy.xml
 WORKDIR /app
 EXPOSE 5000
 
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:10.0-noble AS build
 ARG TARGETARCH
 ARG BUILD_CONFIGURATION=Release
 
